@@ -2,7 +2,7 @@ import cv2
 from matplotlib import pyplot as plt
 import numpy as np
 
-img = cv2.imread('./img/4_5.bmp', cv2.IMREAD_COLOR)
+img = cv2.imread('../img/4_5.bmp', cv2.IMREAD_COLOR)
 
 dst = cv2.fastNlMeansDenoisingColored(img,None,10,10,3,21)
 

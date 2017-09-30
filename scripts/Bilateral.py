@@ -1,7 +1,7 @@
 import cv2
 from matplotlib import pyplot as plt
 
-img = cv2.imread('./img/4_5.bmp', cv2.IMREAD_COLOR)
+img = cv2.imread('../img/4_5.bmp', cv2.IMREAD_COLOR)
 bi = cv2.bilateralFilter(img, 51, 10, 10)
 
 plt.subplot(1,2,1)
