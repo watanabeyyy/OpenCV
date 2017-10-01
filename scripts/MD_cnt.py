@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-from scipy import stats
 from matplotlib import pyplot as plt
 
 def trim(img):
@@ -66,7 +65,7 @@ def cnt_disk(sub_bin, sub_bin_y):
     #print(u"谷の中心座標:\n", center[np.where(data[:, 3] > sub_bin_y - 10)])
     # print("枚数:", num-1)
 
-    return num - 1, center[np.where(data[:, 3] > sub_bin_y - 10)][:,0]
+    return num , center[np.where(data[:, 3] > sub_bin_y - 10)][:,0]
 
 
 # img_x = np.shape(img)[1]
@@ -86,29 +85,30 @@ def cnt_disk(sub_bin, sub_bin_y):
 # print(pre_cnt)
 # print(stats.mode(pre_cnt))
 
-org_img = cv2.imread('../img/56_6.bmp', cv2.IMREAD_GRAYSCALE)
-img = trim(org_img)
-binarize = hist_bin(img)
-num , point = cnt_disk(binarize, np.shape(binarize)[0])
+if __name__ == "__main__":
+    org_img = cv2.imread('../img/56_6.bmp', cv2.IMREAD_GRAYSCALE)
+    img = trim(org_img)
+    binarize = hist_bin(img)
+    num , point = cnt_disk(binarize, np.shape(binarize)[0])
 
-print("谷位置:",point)
-print(num,"枚")
+    print("谷位置:",point)
+    print(num-1,"枚")
 
-size = 3
+    size = 3
 
-plt.subplot(1, size, 1)
-plt.imshow(org_img)
-plt.title("original")
-plt.xticks([]), plt.yticks([])
+    plt.subplot(1, size, 1)
+    plt.imshow(org_img)
+    plt.title("original")
+    plt.xticks([]), plt.yticks([])
 
-plt.subplot(1, size, 2)
-plt.imshow(img)
-plt.title("trim->hist_equalize")
-plt.xticks([]), plt.yticks([])
+    plt.subplot(1, size, 2)
+    plt.imshow(img)
+    plt.title("trim->hist_equalize")
+    plt.xticks([]), plt.yticks([])
 
-plt.subplot(1, size, 3)
-plt.imshow(binarize)
-plt.title("binalize")
-plt.xticks([]), plt.yticks([])
+    plt.subplot(1, size, 3)
+    plt.imshow(binarize)
+    plt.title("binalize")
+    plt.xticks([]), plt.yticks([])
 
-plt.show()
+    plt.show()
