@@ -48,7 +48,7 @@ def check_orientation(img, num, point):
     print(ori)
 
 
-org_img = cv2.imread('../img/4_5.bmp', cv2.IMREAD_GRAYSCALE)
+org_img = cv2.imread('../img/8_8.bmp', cv2.IMREAD_GRAYSCALE)
 # トリミング⇒枚数カウント
 img = MD_cnt.trim(org_img)
 bin = MD_cnt.make_bin(img, th_bri=60, th_num=0.8)
